@@ -1,0 +1,37 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor red
+title Asset-backed Bond\nexample workflows
+
+actor Borrower
+actor Issuer
+participant "Asset-backed Bond" as Bond
+actor Investor
+
+==issuance==
+Issuer -> Bond: issues bond
+
+==investment==
+Investor -> Bond: invests capital, on a schedule
+Borrower <- Bond: releases capital as needed
+
+==running== 
+Borrower -> Bond: create asset
+Bond -> Bond : create revenue stream (leasing payments)
+Borrower -> Bond : revenue stream payments (eg leasing)
+Bond -> Investor: amortisation payment (principal)
+Bond -> Investor: coupon payment (interest)
+
+==early termination==
+Borrower -> Bond: early termination (w/ optional insurance payment)
+Bond -> Bond : cancel unpaid revenue stream payments
+Bond -> Investor: insurance payment
+
+==default==
+Borrower -> Bond: default
+Bond -> Bond : cancel unpaid revenue stream payments
+
+
+@enduml
