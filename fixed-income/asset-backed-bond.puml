@@ -33,5 +33,4 @@ Bond -> Investor: insurance payment
 Borrower -> Bond: default
 Bond -> Bond : cancel unpaid revenue stream payments
 
-
 @enduml
