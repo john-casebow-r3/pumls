@@ -1,0 +1,33 @@
+@startuml
+
+skinparam titleBorderRoundCorner 15
+skinparam titleBorderThickness 2
+skinparam titleBorderColor red
+title Bond\nexample workflows
+
+actor "Borrower (Issuer)" as Borrower
+participant Bond
+actor Lender
+
+==issuance==
+Borrower -> Bond: issues bond
+note right of Bond
+* face value (par value)
+* issue price
+* coupon rate (interest rate)
+* coupon dates
+* maturity date
+end note
+
+==investment==
+Lender -> Borrower: purchases bond at issue price
+
+==running== 
+loop
+Borrower -> Lender: coupon payment
+end loop
+
+==maturity== 
+Borrower -> Lender: par value repayment
+
+@enduml
